@@ -4,21 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Login Page</title>
-    <link rel="stylesheet" href="user_style.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_style.css' %}">
+
 </head>
 <body>
+<div class="wraper">
     <h1 class='logo'>MOVING WARS</h1>
-    <p>Let's start Moving!!!!</p>
-    <h1>Login</h1>
-    <form action="/user/login" method="POST">
+    <h2>Let's start Moving!!!!</h2>
+    <form action="/create/user" method="POST">
         {%csrf_token%}
-    <div>Email:
-        <input type="text" name="email">
-    </div>        
-    <div>Password:
-        <input type="password" name="password">
-    </div>
-    <button type="submit">Submit</button>
+        <div>First Name:
+            <input type="text" name="first_name">
+        </div>
+        <div>Last Name:
+            <input type="text" name="last_name">
+        </div>        
+        <div>Email:
+            <input type="text" name="email">
+        </div>        
+        <div>Password:
+            <input type="password" name="password">
+        </div>
+        <div>Confirm Password
+            <input type="password" name="confirm-password">
+        </div>
+        <button type="submit">Submit</button>
     </form>
+    <div class="login">
+         <h1>Login</h1>
+        <form  action="/user/login" method="POST">
+        {%csrf_token%}
+            <div>Email:
+                <input type="text" name="email">
+            </div>        
+            <div>Password:
+                <input type="password" name="password">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="/create/user">Register Here!</a>
+    </div>  
+</div>  
 </body>
 </html>

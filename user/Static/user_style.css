@@ -1,0 +1,53 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.wraper {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, #EE7752, #426bf5 ,#19a5d8,#23D5AB);
+    background-size: 400% 400%;
+    position : relative;
+    animation: change 10s ease-in-out infinite;
+
+}
+
+@keyframes change {
+0%{
+    background-position: 0 50%;
+}
+50%{
+    background-position: 100% 50%;
+}
+100%{
+    background-position: 0 50%;
+}
+
+}
+
+.logo{
+    font-family: fantasy;
+    font-weight: bolder;
+    color: white ;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+
+}
+
+.wraper h2{
+    font-family: fantasy;
+    font-weight: bolder;
+    color: white ;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.login{
+    border: 3px solid #fff;
+    margin: auto;
+    width: 300px;
+    margin-top: 50px;
+
+}
