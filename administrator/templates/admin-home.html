@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+    <title>Admin Home</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Hello {{ user.first_name }} {{ user.last_name }}!</h1>
+        <a class="right" href="/admin/logout">Logout</a>
+    </div>
+    <div class="container">
+        <div class="table">
+            <h3>New Admin Requests:</h3>
+            <table class="newadmin">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in new_users %}
+                <tr>
+                    <th>{{ i.first_name }}</th>
+                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        <a href="/admin/accept-admin/{{ i.id }}">Accept</a>
+                        <a href="/admin/deny-admin/{{ i.id }}">Deny</a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table">
+            <h3>All Administrators:</h3>
+            <table class="newadmin">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in all_admin %}
+                <tr>
+                    <th>{{ i.first_name }}</th>
+                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        {% if i.admin == user %}
+                        <a href="/admin/del-admin/{{ i.id }}">Delete</a>
+                        {% endif %}
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table">
+            <h3>New Contractor Requests:</h3>
+            <table class="newadmin">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in pros %}
+                <tr>
+                    <th>{{ i.first_name }}</th>
+                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        <a href="/admin/pro/{{ i.id }}">View</a>
+                        <a href="/admin/del-pro/{{ i.id }}">Delete</a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -9,27 +9,37 @@
 </head>
 <body>
     <div class="login-container">
+        <div class="messages">
+            {% if messages %}
+                <ul class="error">
+                    {% for i in messages %}
+                        <li>{{i}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         <form action="/admin/register" method="POST">
+            {% csrf_token %}
             <table>
                 <tr>
                     <th>First Name: </th>
-                    <th><input type="text" name="fname"></th>
+                    <th><input type="text" name="f"></th>
                 </tr>
                 <tr>
                     <th>Last Name: </th>
-                    <th><input type="text" name="lname"></th>
+                    <th><input type="text" name="l"></th>
                 </tr>
                 <tr>
                     <th>Email: </th>
-                    <th><input type="text" name="lname"></th>
+                    <th><input type="email" name="e"></th>
                 </tr>
                 <tr>
                     <th>Password: </th>
-                    <th><input type="text" name="lname"></th>
+                    <th><input type="password" name="p"></th>
                 </tr>
                 <tr>
-                    <th>Password: </th>
-                    <th><input type="text" name="lname"></th>
+                    <th>Confirm Password: </th>
+                    <th><input type="password" name="cp"></th>
                 </tr>
             </table>
             <button>Register</button>
