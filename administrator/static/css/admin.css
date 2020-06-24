@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 .login-container{
     width: 99%;
     display: flex;
@@ -12,4 +16,11 @@
     text-align: center;
     list-style-type: none;
     color: red;
+}
+table{
+    border: 3px solid black;
+}
+.table{
+    margin-left: 20px;
+    margin-top: 40px;
 }
