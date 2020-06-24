@@ -24,3 +24,11 @@ table{
     margin-left: 20px;
     margin-top: 40px;
 }
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.header a{
+    font-size: 15px;
+    margin-right: 10px;
+}

@@ -10,6 +10,7 @@
 <body>
     <div class="header">
         <h1>Hello {{ user.first_name }} {{ user.last_name }}!</h1>
+        <a class="right" href="/admin/logout">Logout</a>
     </div>
     <div class="container">
         <div class="table">
@@ -52,6 +53,28 @@
                         {% if i.admin == user %}
                         <a href="/admin/del-admin/{{ i.id }}">Delete</a>
                         {% endif %}
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table">
+            <h3>New Contractor Requests:</h3>
+            <table class="newadmin">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in pros %}
+                <tr>
+                    <th>{{ i.first_name }}</th>
+                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        <a href="/admin/pro/{{ i.id }}">View</a>
+                        <a href="/admin/del-pro/{{ i.id }}">Delete</a>
                     </th>
                 </tr>
                 {% endfor %}

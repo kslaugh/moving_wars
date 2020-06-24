@@ -10,4 +10,8 @@ urlpatterns=[
     path('accept-admin/<int:id>',views.actadmin),
     path('deny-admin/<int:id>',views.denadmin),
     path('del-admin/<int:id>',views.deladmin),
+    path('logout',views.logout),
+    path('del-pro/<int:id>',views.delpro),
+    path('pro/<int:id>',views.viewpro),
+    path('act-pro/<int:id>',views.actpro),
 ]
