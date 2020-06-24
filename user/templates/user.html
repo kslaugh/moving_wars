@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Login Page</title>
+    <link rel="stylesheet" href="user_style.css">
 </head>
 <body>
-    <h1>Hello User</h1>
+    <h1 class='logo'>MOVING WARS</h1>
+    <p>Let's start Moving!!!!</p>
+    <h1>Login</h1>
+    <form action="/user/login" method="POST">
+        {%csrf_token%}
+    <div>Email:
+        <input type="text" name="email">
+    </div>        
+    <div>Password:
+        <input type="password" name="password">
+    </div>
+    <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
