@@ -10,7 +10,17 @@
 <body>
     <div class="login-container">
         <h1>Admin Login Page</h1>
-        <form action="admin/login" method="POST">
+        <div class="messages">
+            {% if messages %}
+                <ul class="error">
+                    {% for i in messages %}
+                        <li>{{i}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <form action="/admin/login" method="POST">
+            {% csrf_token %}
             <table>
                 <tr>
                     <th>Email: </th>
@@ -23,7 +33,7 @@
             </table>
             <button>Login</button>
         </form>
-        <a href="admin/reg">Register a new Administrator</a>
+        <a href="/admin/reg">Register a new Administrator</a>
     </div>
 </body>
 </html>
