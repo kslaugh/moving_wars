@@ -29,8 +29,14 @@ def log(request):
     e=Administrator.objects.logVals(request.POST)
     if len(e)==0:
         request.session['user']=Administrator.objects.get(email=request.POST['email']).id
-        return redirect('/admin/dashboard')
+        return redirect('/admin/home')
     else:
         for i in e.values():
             messages.error(request,i)
         return redirect('/admin/')
+
+def home(request):
+    context={
+        'user':Administrator.objects.get(id=request.session['user'])
+    }
+    return render(request,'admin-home.html',context)
