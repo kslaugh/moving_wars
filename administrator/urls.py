@@ -7,6 +7,7 @@ urlpatterns=[
     path('register',views.register),
     path('login',views.log),
     path('home',views.home),
-    path('accept-admin',views.actadmin),
-    path('deny-admin',views.denadmin),
+    path('accept-admin/<int:id>',views.actadmin),
+    path('deny-admin/<int:id>',views.denadmin),
+    path('del-admin/<int:id>',views.deladmin),
 ]

@@ -40,12 +40,27 @@ def log(request):
 def home(request):
     context={
         'user':Administrator.objects.get(id=request.session['user']),
-        'new_users':NewAdmin.objects.all()
+        'new_users':NewAdmin.objects.all(),
+        'all_admin':Administrator.objects.all()
     }
     return render(request,'admin-home.html',context)
 
-def actadmin(request):
-    pass
+def actadmin(request, id):
+    new=NewAdmin.objects.get(id=id)
+    Administrator.objects.create(
+        first_name=new.first_name,
+        last_name=new.last_name,
+        email=new.email,
+        password=new.password,
+        admin=Administrator.objects.get(id=request.session['user'])
+    )
+    new.delete()
+    return redirect('/admin/home')
 
-def denadmin(request):
-    pass
+def denadmin(request, id):
+    NewAdmin.objects.get(id=id).delete()
+    return redirect('/admin/home')
+
+def deladmin(request, id):
+    Administrator.objects.get(id=id).delete()
+    return redirect('/admin/home')
