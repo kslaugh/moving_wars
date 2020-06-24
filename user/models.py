@@ -21,6 +21,7 @@ class Customers(models.Model):
     objects=UserManager()
 
 class Jobs(models.Model):
+    title=models.CharField(max_length=255)
     start_location=models.CharField(max_length=100)
     end_location=models.CharField(max_length=100)
     description=models.CharField(max_length=100)

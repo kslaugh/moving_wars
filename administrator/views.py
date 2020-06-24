@@ -38,6 +38,9 @@ def log(request):
         return redirect('/admin/')
 
 def home(request):
+    if 'user' not in request.session:
+        messages.error(request,"You must be logged in to do that!")
+        return redirect('/admin/')
     context={
         'user':Administrator.objects.get(id=request.session['user']),
         'new_users':NewAdmin.objects.all(),
