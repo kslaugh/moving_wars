@@ -8,9 +8,29 @@
     <title>Admin Home</title>
 </head>
 <body>
+    <div class="header">
+        <h1>Hello {{ user.first_name }} {{ user.last_name }}!</h1>
+    </div>
     <div class="container">
         <table class="newadmin">
-            <h1>New Admin Requests:</h1>
+            <h3>New Admin Requests:</h3>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            {% for i in new_users %}
+                <tr>
+                    <th>{{ i.first_name }}</th>
+                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        <a href="/admin/accept-admin">Accept</a>
+                        <a href="/admin/deny-admin">Deny</a>
+                    </th>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 </body>
