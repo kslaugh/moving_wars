@@ -9,8 +9,8 @@ class AdminManager(models.Manager):
             err['e']='Email and/or Password incorrect'
         else:
             u=Administrator.objects.get(email=d['e'])
-            # if not bcrypt.checkpw(d['p'].encode(), u.password.encode()):
-                # err['p']='Email and/or Password incorrect'
+            if not bcrypt.checkpw(d['p'].encode(), u.password.encode()):
+                err['p']='Email and/or Password incorrect'
         return err
     def regVals(self, d):
         err={}
