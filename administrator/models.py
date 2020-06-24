@@ -8,7 +8,7 @@ class AdminManager(models.Model):
 
 
 
-class Admin(models.Model):
+class Administrator(models.Model):
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
     email=models.EmailField(max_length=100)
@@ -16,6 +16,7 @@ class Admin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects=AdminManager()
+    admin=models.ForeignKey('Administrator',null=True,on_delete=models.SET_NULL)
 
 class Prospectors(models.Model):
     fname=models.CharField(max_length=255)
@@ -35,4 +36,13 @@ class ProVehicles(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     owner=models.ForeignKey(Prospectors,related_name='vehicles',on_delete=models.CASCADE)
+    objects=AdminManager()
+
+class NewAdmin(models.Model):
+    first_name=models.CharField(max_length=100)
+    last_name=models.CharField(max_length=100)
+    email=models.EmailField(max_length=100)
+    password=models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     objects=AdminManager()
