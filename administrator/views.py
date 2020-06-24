@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Administrator,NewAdmin
+from .models import Administrator,NewAdmin,Prospectors,ProVehicles
 from django.contrib import messages
 import bcrypt
 
@@ -41,7 +41,8 @@ def home(request):
     context={
         'user':Administrator.objects.get(id=request.session['user']),
         'new_users':NewAdmin.objects.all(),
-        'all_admin':Administrator.objects.all()
+        'all_admin':Administrator.objects.all(),
+        'pros':Prospectors.objects.all()
     }
     return render(request,'admin-home.html',context)
 
@@ -64,3 +65,21 @@ def denadmin(request, id):
 def deladmin(request, id):
     Administrator.objects.get(id=id).delete()
     return redirect('/admin/home')
+
+def logout(request):
+    request.session.clear()
+    return redirect('/admin/')
+
+def delpro(request, id):
+    pass
+
+def actpro(request, id):
+    pass
+
+def viewpro(request, id):
+    pro=Prospectors.objects.get(id=id)
+    context={
+        'pro':pro,
+        'pro-v':pro.vehicles
+    }
+    return render(request,'admin-pro.html',context)
