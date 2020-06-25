@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.login-container{
+    margin-top: 20px;
+    width: 99%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.messages{
+    display: flex;
+    justify-content: center;
+}
+.error{
+    text-align: center;
+    list-style-type: none;
+    color: red;
+}
+form{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    border: 3px solid black;
+    font-size: 20px;
+}
+.login-container a{
+    font-size: 20px;
+    margin-top: 20px;
+}
+.login-container button{
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 10px;
+    margin-top: 20px;
+}
