@@ -12,23 +12,9 @@
     animation: change 10s ease-in-out infinite;
 
 }
-
-@keyframes change {
-0%{
-    background-position: 0 50%;
-}
-50%{
-    background-position: 100% 50%;
-}
-100%{
-    background-position: 0 50%;
-}
-
-}
-
 .logo{
     font-family: fantasy;
-    font-weight: bolder;
+    font-weight: bold;
     color: white ;
     text-align: center;
     font-size: 50px;
@@ -37,7 +23,7 @@
 
 .wraper h2{
     font-family: fantasy;
-    font-weight: bolder;
+    font-weight: bold;
     color: white ;
     text-align: center;
     
@@ -69,4 +55,96 @@
     margin-top: 20px;
     overflow: auto;
     padding: 5px 10px;
+}
+
+.registration button{
+    width: 80px;
+    height: 22px;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    background: black;
+    outline: none;
+}
+
+.reg-log{
+    width: 300px;
+    height: 200px;
+    border: solid black 2px;
+}
+
+.views{
+    width: 300px;
+    min-height: 100px;
+    border: solid black 2px;
+    display: block;
+    background-color: white;
+    margin: auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 50px;
+}   
+
+.info{
+    font-family: 'Oswald', sans-serif;
+}
+
+.info p{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+@keyframes change {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+    
+    }
+
+.sub_form{
+    max-width: 250px;
+    margin: 2rem auto;
+    border: 2px solid black;
+    background-color: lightblue;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+.sub_form label{
+    display: block;
+}
+
+.sub_form input{
+    display: block;
+    width: 250px;
+}
+
+.control{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.btn-button{
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 80px;
+    height: 32px;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    background: black;
+    outline: none;
 }

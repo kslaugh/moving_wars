@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import bcrypt
 from datetime import timedelta
-
+from contractor.models import Vehicles
 from .models import *
 
 # Create your views here.
@@ -16,7 +16,8 @@ def dashboard(request):
 
     context={
         'customer':Customers.objects.get(id=request.session["customer_id"]),
-        'jobs':reversed(Jobs.objects.all())
+        'jobs':reversed(Jobs.objects.all()),
+        'vehicles':Vehicles.objects.all(),
     }
     return render(request, "dashboard.html",context)
 
@@ -94,3 +95,52 @@ def add_job(request):
 
     )
     return redirect('/dashboard')
+
+def delete_job(request, job_id):
+    job =Jobs.objects.get(id=job_id)
+
+    job.delete()
+
+    return redirect("/dashboard")
+
+def edit_job(request, job_id):
+    j=Jobs.objects.get(id=job_id)
+    
+    context={
+        'job': j,
+        'customer':Customers.objects.get(id=request.session['customer_id']),
+    }
+    return render(request,"edit_job.html",context)
+
+def update_job(request, job_id):
+    if 'fragile' in request.POST:
+        frag=True
+    else:
+        frag=False
+    up_job= Jobs.objects.get(id=job_id)
+    
+    
+    up_job.title = request.POST["title"]
+    up_job.start_location = request.POST["start_location"]
+    up_job.end_location= request.POST["end_location"]
+    up_job.description= request.POST["description"]
+    up_job.attributes= request.POST['attributes']
+    up_job.fragile=frag
+    up_job.vehicle_type=request.POST["vehicle_type"]
+    up_job.duration=timedelta(hours=int(request.POST['duration']))
+    up_job.date=request.POST['date'] 
+    up_job.time=request.POST["time"]  
+
+    up_job.save()
+    
+    return redirect('/dashboard')
+
+def view_job(request, job_id):
+    j= Jobs.objects.get(id=job_id)
+    context={
+        'job':j,
+        'jobs': Jobs.objects.all(),
+        'customer':Customers.objects.get(id=request.session['customer_id']),
+        'vehicles':Vehicles.objects.all(),
+    }
+    return render(request, "view_job.html", context)

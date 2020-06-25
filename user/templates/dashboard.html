@@ -18,19 +18,18 @@
         </form>
         <div class="text_area">
                 {% for j in jobs %}
-                <tr>
-                    <th>{{ j.title}}</th> 
+                <ul>
+                    {% if j.customer.id == customer.id%}
+                    <th><a href="/view/{{j.id}}/">{{ j.title}}</a></th> 
                     <th>{{ j.start_location}}</th>
                     <th>{{j.end_location}}</th>
                     <th>{{j.description}}</th>
                     <th>{{j.date}}</th> 
-                    <th>{{j.time}}</th>   
-                    <th><a href="/view/{{j.id}}/">view</a> |
-                        {% if j.customer.id == customer.id%}
-                         <a href="/edit/{{j.id}}">Edit</a> | 
+                    <th>{{j.time}}</th>    
+                        <th><a href="/edit/{{j.id}}">Edit</a> | 
                          <a href="/delete/{{j.id}}">remove</a></th>
                          {% endif %}
-                </tr>
+                </ul>
                 {% endfor %}
         </div>
     </div>
