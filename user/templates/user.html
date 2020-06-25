@@ -10,41 +10,51 @@
 </head>
 <body>
 <div class="wraper">
+    {% for error in messages %}
+    <p>{{error}}</p>
+    {% endfor %}
     <h1 class='logo'>MOVING WARS</h1>
     <h2>Let's start Moving!!!!</h2>
-    <form action="/create/user" method="POST">
-        {%csrf_token%}
-        <div>First Name:
-            <input type="text" name="first_name">
+    <div class="reg_log">
+        <div class="registration">
+            <h1>Registration!</h1>
+            <form action="/create/user" method="POST">
+            {%csrf_token%}
+                <div>First Name:
+                    <input type="text" name="first_name">
+                </div>
+                <div>Last Name:
+                    <input type="text" name="last_name">
+                </div>        
+                <div>Email:
+                    <input type="text" name="email">
+                </div>        
+                <div>
+                    Phone:
+                <input type="tel" name="phone">
+                </div>
+                <div>Password:
+                    <input type="password" name="password">
+                </div>
+                <div>Confirm Password
+                    <input type="password" name="confirm-password">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </div>
-        <div>Last Name:
-            <input type="text" name="last_name">
-        </div>        
-        <div>Email:
-            <input type="text" name="email">
-        </div>        
-        <div>Password:
-            <input type="password" name="password">
+        <div class="login">
+            <h1>Login</h1>
+            <form  action="/user/login" method="POST">
+            {%csrf_token%}
+                <div>Email:
+                    <input type="text" name="email">
+                </div>        
+                <div>Password:
+                    <input type="password" name="password">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </div>
-        <div>Confirm Password
-            <input type="password" name="confirm-password">
-        </div>
-        <button type="submit">Submit</button>
-    </form>
-    <div class="login">
-         <h1>Login</h1>
-        <form  action="/user/login" method="POST">
-        {%csrf_token%}
-            <div>Email:
-                <input type="text" name="email">
-            </div>        
-            <div>Password:
-                <input type="password" name="password">
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-        <a href="/create/user">Register Here!</a>
-    </div>  
 </div>  
 </body>
 </html>

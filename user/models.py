@@ -41,6 +41,7 @@ class Jobs(models.Model):
     end_location=models.CharField(max_length=100)
     description=models.CharField(max_length=100)
     attributes=models.CharField(max_length=100)
+    fragile=models.BooleanField()
     vehicle_type=models.CharField(max_length=100)
     customer=models.ForeignKey(Customers, related_name='jobs', on_delete=models.CASCADE)
     duration=models.DurationField()
