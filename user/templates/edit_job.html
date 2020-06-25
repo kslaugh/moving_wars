@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_style.css' %}">
+</head>
+<body>
+    <div class="wraper">
+        <h1 class="logo">Hello {{ customer.first_name}} {{customer.last_name}}!</h1>
+        <h2>Let's edit yor job</h2>
+        <form class="sub_form" action="/edit/{{ job.id}}/update" method=POST>
+            {%csrf_token%}
+            <label>
+                Title:<input type="text" name="title" value="{{job.title}}">
+            </label>
+            <label>
+                Start Location : <input type="text" name="start_location" value="{{job.start_location}}">
+            </label>
+            <label>
+                End Location: <input type="text" name="end_location" value="{{job.end_location}}">
+            </label>
+            <label>
+                Descriptions : <input type="text" name="description" value="{{job.description}}">
+            </label>
+            <label>
+                Describe your load :<td><select name="attributes" value="{{job.attribute}}">
+
+                    <option value="">heavy</option>              
+                    <option value="">small</option>              
+                    <option value="">big</option>              
+                </select>
+            <label>
+            
+                <label for="fragile">Fragile/Glass?<input type="checkbox" name="fragile" value="True" ></label>
+                
+            </label>
+            <label>
+                Vehicle Type: <td><select name="vehicle_type" value="{{job.vehicle_type}}">
+                    <option value="">Pickup</option>              
+                    <option value="">Van</option>              
+                    <option value="">XL Van</option>              
+                    <option value="">Small Box Truck</option>              
+                    <option value="">Large Box Truck</option>              
+                </select></td>
+            </label>
+            <label>
+                Duration: (hours)<input type="number" name="duration" min=0 max=24 value="duration">
+            </label>
+            <label>
+                Date: <input type="date" name="date">
+            </label>
+            <label>
+                Time: <input type="time" name="time" value="time">
+            </label>
+        <div class="control">
+            <button class="btn-button" type="submit" >Create</button>
+        </form>
+        <form action="/dashboard" method="POST">
+            {%csrf_token%}
+        <button class="btn-button" type="submit">Cancel</button>
+        </div>
+        <a href="/user/logout">Log out</a>
+        </form>
+    </div>    
+</body>
+</html>
