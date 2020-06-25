@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import Customers,Jobs
+import bcrypt,re
 
 class ContManager(models.Manager):
     def logVals(self, d):

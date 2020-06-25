@@ -148,3 +148,12 @@
     background: black;
     outline: none;
 }
+.footer{
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    background-color: #19a5d880;
+}
