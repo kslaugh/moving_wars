@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contractor.css' %}">
+    <title>Contractor Registration</title>
+</head>
+<body>
+    <h1>Contractor Application:</h1>
+    <div class="messages">
+        {% if messages %}
+            <ul class="error">
+                {% for i in messages %}
+                    <li>{{i}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="registration">
+        <form action="/contractor/register" method="POST">
+            <table>
+                <tr>
+                    <th>First Name:</th>
+                    <th><input type="text" name="f"></th>
+                </tr>
+                <tr>
+                    <th>Last Name:</th>
+                    <th><input type="text" name="l"></th>
+                </tr>
+            </table>
+            <button>Continue</button>
+        </form>
+    </div>
+
+</body>
+</html>
