@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Contractors,Vehicles,Ratings,Reviews,Bids
+from administrator.models import Prospectors,ProVehicles
 from django.contrib import messages
 import bcrypt
 

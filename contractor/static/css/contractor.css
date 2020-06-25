@@ -18,7 +18,7 @@
     list-style-type: none;
     color: red;
 }
-form{
+. .login-container form{
     padding: 10px;
     display: flex;
     align-items: center;
@@ -38,4 +38,29 @@ form{
     width: 80%;
     margin: 10px;
     margin-top: 20px;
+}
+.registration{
+    margin-top: 20px;
+    width: 99%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.registration button{
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 10px;
+    margin-top: 20px;
+}
+.registration h3{
+    text-decoration: underline;
+    margin: 20px 0px;
+}
+.phone{
+    width: 23px;
+}
+.phone2{
+    width: 30px;
 }
