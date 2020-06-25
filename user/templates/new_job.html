@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new Job</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_style.css' %}">
+</head>
+<body>
+    {% for error in messages %}
+        <p>{{error}}</p>
+    {% endfor %}
+    <div class="wraper">
+        <h1 class="logo">MOVING WAR</h1>
+        <h1>Hello {{ customer.first_name }} {{ customer.last_name}}</h1>
+        <form action="/add/job" method="POST">
+            {%csrf_token%}
+            <h1>Add a New Job</h1>
+            <div >
+                Title:<input type="text" name="title">
+            </div>
+            <div>
+                Start Location : <input type="text" name="start_location">
+            </div>
+            <div>
+                End Location: <input type="text" name="end_location">
+            </div>
+            <div>
+                Descriptions : <input type="text" name="description">
+            </div>
+            <div>
+                Describe your load :<td><select name="attributes">
+
+                    <option value="">heavy</option>              
+                    <option value="">small</option>              
+                    <option value="">big</option>              
+                </select></td>
+            <div>
+               
+                <label for="fragile">Fragile/Glass?</label>
+                <input type="checkbox" name="fragile" value="True" >
+                
+            </div>
+            <div>
+                Vehicle Type: <td><select name="vehicle_type">
+                    <option value="">Pickup</option>              
+                    <option value="">Van</option>              
+                    <option value="">XL Van</option>              
+                    <option value="">Small Box Truck</option>              
+                    <option value="">Large Box Truck</option>              
+                </select></td>
+            </div>
+            <div>
+                Duration: (hours)<input type="number" name="duration" min=0 max=24>
+            </div>
+            <div>
+                Date: <input type="date" name="date">
+            </div>
+            <div>
+                Time: <input type="time" name="time">
+            </div>
+        <button type="submit" >Create</button>
+        </form>
+        <form action="/dashboard" method="POST">
+            {%csrf_token%}
+        <button type="submit">Cancel</button>
+        <a href="../user/logout">Log out</a>
+    </div>
+</body>
+</html>

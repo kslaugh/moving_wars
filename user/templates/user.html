@@ -4,8 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Login Page</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_style.css' %}">
+
 </head>
 <body>
-    <h1>Hello User</h1>
+<div class="wraper">
+    {% for error in messages %}
+    <p>{{error}}</p>
+    {% endfor %}
+    <h1 class='logo'>MOVING WARS</h1>
+    <h2>Let's start Moving!!!!</h2>
+    <div class="reg_log">
+        <div class="registration">
+            <h1>Registration!</h1>
+            <form action="/create/user" method="POST">
+            {%csrf_token%}
+                <div>First Name:
+                    <input type="text" name="first_name">
+                </div>
+                <div>Last Name:
+                    <input type="text" name="last_name">
+                </div>        
+                <div>Email:
+                    <input type="text" name="email">
+                </div>        
+                <div>
+                    Phone:
+                <input type="tel" name="phone">
+                </div>
+                <div>Password:
+                    <input type="password" name="password">
+                </div>
+                <div>Confirm Password
+                    <input type="password" name="confirm-password">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="login">
+            <h1>Login</h1>
+            <form  action="/user/login" method="POST">
+            {%csrf_token%}
+                <div>Email:
+                    <input type="text" name="email">
+                </div>        
+                <div>Password:
+                    <input type="password" name="password">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+</div>  
 </body>
 </html>

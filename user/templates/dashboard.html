@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_style.css' %}">
+</head>
+<body>
+    <div class="wraper">
+        <h1 class="logo">Hello {{customer.first_name}} {{customer.last_name}}</h1>
+        <h3 class="logo">Let's start create your job!!</h3>
+        <a href="user/logout">Log out</a>
+        <form action="new/job" method="POST">
+            {%csrf_token%}
+        <button class="create-btn" type="submit">Create a new Job Request!</button>
+        </form>
+        <div class="text_area">
+                {% for j in jobs %}
+                <tr>
+                    <th>{{ j.title}}</th> 
+                    <th>{{ j.start_location}}</th>
+                    <th>{{j.end_location}}</th>
+                    <th>{{j.description}}</th>
+                    <th>{{j.date}}</th> 
+                    <th>{{j.time}}</th>   
+                    <th><a href="/view/{{j.id}}/">view</a> |
+                        {% if j.customer.id == customer.id%}
+                         <a href="/edit/{{j.id}}">Edit</a> | 
+                         <a href="/delete/{{j.id}}">remove</a></th>
+                         {% endif %}
+                </tr>
+                {% endfor %}
+        </div>
+    </div>
+
+    
+
+</html>
