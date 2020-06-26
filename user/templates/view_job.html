@@ -35,14 +35,14 @@
     <div class="views">
         <table>
             <tr>
-                <th>Contractor</th>
-                <th>Rating</th>
-                <th>Posted</th>
-                <th>Amount</th>
+                <th> Contractor </th>
+                <th> Rating </th>
+                <th> Posted </th>
+                <th> Amount </th>
             </tr>
             {% for i in job.bids.all %}
             <tr>
-                <th>{{ i.contractor.fname }}</th>
+                <th><a href="view_contractor/{{ i.contractor.id }}">{{ i.contractor.fname }}</a></th><!--make a contractor view page-->
                 <th>{{ i.contractor.rating.average }}</th>
                 <th>{{ i.updated_at }}</th>
                 <th>${{ i.amount }}.00</th>
