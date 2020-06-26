@@ -14,4 +14,5 @@ urlpatterns=[
     path('del-pro/<int:id>',views.delpro),
     path('pro/<int:id>',views.viewpro),
     path('act-pro/<int:id>',views.actpro),
+    path('del-con/<int:id>',views.condel)
 ]

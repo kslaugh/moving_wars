@@ -8,7 +8,7 @@
     <title>Admin Home</title>
 </head>
 <body>
-    <div class="header">
+    <div class="home_header">
         <h1>Hello {{ user.first_name }} {{ user.last_name }}!</h1>
         <a class="right" href="/admin/logout">Logout</a>
     </div>
@@ -69,12 +69,34 @@
                 </tr>
                 {% for i in pros %}
                 <tr>
-                    <th>{{ i.first_name }}</th>
-                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.fname }}</th>
+                    <th>{{ i.lname }}</th>
                     <th>{{ i.email }}</th>
                     <th>
                         <a href="/admin/pro/{{ i.id }}">View</a>
                         <a href="/admin/del-pro/{{ i.id }}">Delete</a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table">
+            <h3>All Contractors:</h3>
+            <table class="newadmin">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in cons %}
+                <tr>
+                    <th>{{ i.fname }}</th>
+                    <th>{{ i.lname }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        <a href="/admin/con/{{ i.id }}">View</a><!--Doesn't do anything yet!-->
+                        <a href="/admin/del-con/{{ i.id }}">Delete</a>
                     </th>
                 </tr>
                 {% endfor %}

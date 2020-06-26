@@ -8,12 +8,14 @@
     <title>Contractor Registration</title>
 </head>
 <body>
-    <h1>Contractor Application:</h1>
+    <div class="header">
+        <h1>Contractor Application:</h1>
+    </div>
     <div class="messages">
         {% if messages %}
-            <ul class="error">
+            <ul class="error_list">
                 {% for i in messages %}
-                    <li>{{i}}</li>
+                    <li class="{{ i.tags }}">{{i}}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -69,6 +71,7 @@
                 <tr>
                     <th>Vehicle Type: </th>
                     <th><select name="vt">
+                        <option value="default" selected>--pick one--</option>
                         <option value="Pickup">Pickup</option>
                         <option value="Van">Van</option>
                         <option value="XL Van">XL Van</option>

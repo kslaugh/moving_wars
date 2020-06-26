@@ -13,12 +13,11 @@
     display: flex;
     justify-content: center;
 }
-.error{
+.error_list{
     text-align: center;
     list-style-type: none;
-    color: red;
 }
-. .login-container form{
+.login-container form{
     padding: 10px;
     display: flex;
     align-items: center;
@@ -63,4 +62,14 @@
 }
 .phone2{
     width: 30px;
+}
+.header{
+    display: flex;
+    justify-content: space-around;
+}
+.success{
+    color: rgb(218, 142, 2);
+}
+.error{
+    color: red;
 }
