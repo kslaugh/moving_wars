@@ -12,9 +12,9 @@
         <h1>Contractor Login Page</h1>
         <div class="messages">
             {% if messages %}
-                <ul class="error">
+                <ul class="error_list">
                     {% for i in messages %}
-                        <li>{{i}}</li>
+                        <li class="{{ i.tags }}">{{i}}</li>
                     {% endfor %}
                 </ul>
             {% endif %}

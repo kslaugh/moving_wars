@@ -39,7 +39,9 @@ class ContManager(models.Manager):
         if len(d['ma'])<3:
             err['ma']='Input a proper Make'
         if len(d['mo'])<3:
-            err['mo']=''
+            err['mo']='Please input a Model'
+        if d['vt']=="default":
+            err['vt']="Select a Vehicle Type"
         return err
 
 

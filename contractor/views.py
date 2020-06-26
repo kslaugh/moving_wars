@@ -21,20 +21,26 @@ def reg(request):
     return render(request,'cont-reg.html')
 
 def register(request):
-    e=Contractors.objects.regVals(request.POST)
+    e={**Contractors.objects.regVals(request.POST),**Vehicles.objects.veVals(request.POST)}
     if len(e)==0:
         pw=bcrypt.hashpw(request.POST['p'].encode(),bcrypt.gensalt()).decode()
         Prospectors.objects.create(
-            first_name=request.POST['f'],
-            last_name=request.POST['l'],
+            fname=request.POST['f'],
+            lname=request.POST['l'],
             email=request.POST['e'],
             phone=request.POST['ph1']+request.POST['ph2']+request.POST['ph3'],
             password=pw
             )
         messages.success(request,"Contractor Application sent")
-        messages.error(request,"Your account will be approved within a couple days")
+        messages.success(request,"Your account will be approved within a couple days")
         return redirect('/contractor/')
     else:
         for i in e.values():
             messages.error(request,i)
         return redirect('/contractor/reg')
+
+def home(request):
+    context={
+        'user':Contractors.objects.get(id=request.session['cont'])
+    }
+    return render(request,'cont-home.html',context)
