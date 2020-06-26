@@ -65,9 +65,9 @@ def home(request):
     for k in c.bids.all():
         if not k.jobs.bid:
             if len(pen)<1:
-                pen=Jobs.objects.filter(bid=k)
+                pen=Jobs.objects.filter(bids=k)
             else:
-                pen|=Jobs.objects.filter(bid=k)
+                pen|=Jobs.objects.filter(bids=k)
     act=[]
     for l in c.bids.exclude(j=None):
         if len(act)<1:

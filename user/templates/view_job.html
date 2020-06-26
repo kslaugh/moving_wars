@@ -41,7 +41,7 @@
                 <th> Amount </th>
                 <th> Actions </th>
             </tr>
-            {% if not job.bid %}
+            {% if not job.bid.all %}
             {% for i in job.bids.all %}
             <tr>
                 <th><a href="view_contractor/{{ i.contractor.id }}">{{ i.contractor.fname }}</a></th><!--make a contractor view page-->
@@ -52,13 +52,13 @@
             </tr>
             {% endfor %}
             {% endif %}
-            {% if job.bid %}
+            {% if job.bid.all %}
             <tr>
-                <th><a href="view_contractor/{{ i.contractor.id }}">{{ job.bid.contractor.fname }}</a></th><!--make a contractor view page-->
-                <th>{{ job.bid.contractor.rating.average }}</th>
-                <th>{{ job.bid.updated_at }}</th>
-                <th>${{ job.bid.amount }}.00</th>
-                <th><a class="button" href="/cancelbid/{{ job.bid.id }}">Cancel Bid</a></th>
+                <th><a href="view_contractor/{{ i.contractor.id }}">{{ job.bid.first.contractor.fname }}</a></th><!--make a contractor view page-->
+                <th>{{ job.bid.first.contractor.rating.average }}</th>
+                <th>{{ job.bid.first.updated_at }}</th>
+                <th>${{ job.bid.first.amount }}.00</th>
+                <th><a class="button" href="/cancelbid/{{ job.bid.first.id }}">Cancel Bid</a></th>
             </tr>
             {% endif %}
         </table>

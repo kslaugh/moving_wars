@@ -139,6 +139,7 @@ def update_job(request, job_id):
 
 def view_job(request, job_id):
     j= Jobs.objects.get(id=job_id)
+    print(j.bids.all())
     context={
         'job':j,
         'jobs': Jobs.objects.all(),
