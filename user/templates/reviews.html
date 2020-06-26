@@ -11,13 +11,14 @@
     <h4>Job Title:{{job.title}} </h4>
     <h5>Hello {{customer.first_name}}, please leave your reviews for this job below.</h5>
     <form action="/create-review" method="POST">
+      {% csrf_token %}
         <div class="row">
           <div class="col-6">
-              <label for="description" name="description" >Description:</label>
-              <textarea class="form-control" cols="50" rows="4"></textarea>
+              <label for="description" >Description:</label>
+              <textarea class="form-control" cols="50" name="description" rows="4"></textarea>
               <p>
                 <label>Rating</label>
-                <select id = "myList">
+                <select name="rating" id = "myList">
                   <option value = "5">5</option>
                   <option value = "4">4</option>
                   <option value = "3">3</option>
