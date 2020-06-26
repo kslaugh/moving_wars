@@ -61,6 +61,7 @@ def home(request):
         if len(avail_jobs)<1:
             avail_jobs=Jobs.objects.filter(vehicle_type=j)
         avail_jobs|=Jobs.objects.filter(vehicle_type=j)
+    avail_jobs=avail_jobs.filter(bid=None)
     pen=[]
     for k in c.bids.all():
         if not k.jobs.bid:
