@@ -8,7 +8,7 @@
     <title>Admin Home</title>
 </head>
 <body>
-    <div class="header">
+    <div class="home_header">
         <h1>Hello {{ user.first_name }} {{ user.last_name }}!</h1>
         <a class="right" href="/admin/logout">Logout</a>
     </div>
@@ -69,8 +69,8 @@
                 </tr>
                 {% for i in pros %}
                 <tr>
-                    <th>{{ i.first_name }}</th>
-                    <th>{{ i.last_name }}</th>
+                    <th>{{ i.fname }}</th>
+                    <th>{{ i.lname }}</th>
                     <th>{{ i.email }}</th>
                     <th>
                         <a href="/admin/pro/{{ i.id }}">View</a>

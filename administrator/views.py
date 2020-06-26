@@ -74,7 +74,9 @@ def logout(request):
     return redirect('/admin/')
 
 def delpro(request, id):
-    pass
+    pro=Prospectors.objects.get(id=id)
+    pro.delete()
+    return redirect('/admin/home')
 
 def actpro(request, id):
     pass
@@ -83,6 +85,6 @@ def viewpro(request, id):
     pro=Prospectors.objects.get(id=id)
     context={
         'pro':pro,
-        'pro-v':pro.vehicles
+        'v':pro.vehicles.first()
     }
     return render(request,'admin-pro.html',context)

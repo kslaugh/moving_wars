@@ -9,10 +9,51 @@
 </head>
 <body>
     <div class="header">
-        <h1>View {{pro.first_name}}'s info</h1>
+        <h1>View {{pro.fname}}'s info</h1>
     </div>
-    <div class='container'>
-        
+    <div class='view-container'>
+        <h3 class="spacer">Personal Info:</h3>
+        <table>
+            <tr>
+                <th>First Name: </th>
+                <th>{{ pro.fname }}</th>
+            </tr>
+            <tr>
+                <th>Last Name: </th>
+                <th>{{ pro.lname }}</th>
+            </tr>
+            <tr>
+                <th>Email: </th>
+                <th>{{ pro.email }}</th>
+            </tr>
+            <tr>
+                <th>Phone: </th>
+                <th>{{ pro.phone }}</th>
+            </tr>
+        </table>
+        <h3 class="spacer">Vehicle Info:</h3>
+        <table>
+            <tr>
+                <th>Vehicle Type: </th>
+                <th>{{ v.vehicle_type }}</th>
+            </tr>
+            <tr>
+                <th>Year: </th>
+                <th>{{ v.year }}</th>
+            </tr>
+            <tr>
+                <th>Make: </th>
+                <th>{{ v.make }}</th>
+            </tr>
+            <tr>
+                <th>Model: </th>
+                <th>{{ v.model }}</th>
+            </tr>
+        </table>
+        <div class="buttons">
+            <a class="button accept" href="/admin/del-pro/{{ pro.id }}">Decline</a>
+            <a class="button" href="/admin/act-pro/{{ pro.id }}">Accept</a>
+        </div>
     </div>
 </body>
 </html>

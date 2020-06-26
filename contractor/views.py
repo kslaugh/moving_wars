@@ -31,6 +31,13 @@ def register(request):
             phone=request.POST['ph1']+request.POST['ph2']+request.POST['ph3'],
             password=pw
             )
+        ProVehicles.objects.create(
+            year=request.POST['y'],
+            make=request.POST['ma'],
+            model=request.POST['mo'],
+            vehicle_type=request.POST['vt'],
+            owner=Prospectors.objects.last()
+        )
         messages.success(request,"Contractor Application sent")
         messages.success(request,"Your account will be approved within a couple days")
         return redirect('/contractor/')
