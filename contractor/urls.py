@@ -14,4 +14,5 @@ urlpatterns=[
     path('<int:id>',views.viewjob),
     path('cancel',views.cancel),
     path('<int:id>/bid',views.bid),
+    path('<int:id>/placebid',views.placebid),
 ]

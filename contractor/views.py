@@ -105,3 +105,14 @@ def bid(request,id):
         'job':Jobs.objects.get(id=id)
     }
     return render(request,"cont-bid.html",context)
+
+def placebid(request,id):
+    if request.POST['a']=='':
+        messages.error(request,'You must input an Amount')
+        return redirect('/contractor/'+str(id)+'/bid')
+    Bids.objects.create(
+        amount=request.POST['a'],
+        jobs=Jobs.objects.get(id=id),
+        contractor=Contractors.objects.get(id=request.session['cont'])
+    )
+    return redirect('/contractor/home')

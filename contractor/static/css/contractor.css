@@ -149,3 +149,15 @@
 .form{
     background-color: royalblue;
 }
+.bidcont{
+    margin-top: 20px;
+    width: 99%;
+    display: flex;
+    justify-content: space-around;
+}
+.bold{
+    font-weight: bold;
+}
+.bid{
+    width: 50%;
+}
