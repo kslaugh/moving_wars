@@ -19,6 +19,7 @@ def dashboard(request):
         'customer':Customers.objects.get(id=request.session["customer_id"]),
         'jobs':reversed(Jobs.objects.all()),
         'vehicles':Vehicles.objects.all(),
+        "reviews":Reviews.objects.filter(customer=Customers.objects.get(id=request.session["customer_id"])),
     }
     return render(request, "dashboard.html",context)
 
@@ -156,13 +157,11 @@ def load_review_page(request,job_id): # renders the review page
     }
     return render(request, "reviews.html",context)
 
+
 def create_review(request): # creates a new review.
     Reviews.objects.create(
         description = request.POST['description'],
         rating = request.POST['rating'],
         customer = Customers.objects.get(id=request.session["customer_id"])
     )
-    return redirect("/dashboard")
-        
-
-    
+    return redirect("/dashboard")   

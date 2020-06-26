@@ -8,80 +8,82 @@
     <title>Contractor Registration</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Contractor Application:</h1>
-    </div>
-    <div class="messages">
-        {% if messages %}
-            <ul class="error_list">
-                {% for i in messages %}
-                    <li class="{{ i.tags }}">{{i}}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-    <div class="registration">
-        <form action="/contractor/register" method="POST">
-            {% csrf_token %}
-            <h3>Input your Profile Info:</h3>
-            <table class='person'>
-                <tr>
-                    <th>First Name:</th>
-                    <th><input type="text" name="f"></th>
-                </tr>
-                <tr>
-                    <th>Last Name:</th>
-                    <th><input type="text" name="l"></th>
-                </tr>
-                <tr>
-                    <th>Phone:</th>
-                    <th>
-                        ( <input class="phone" type="tel" name="ph1" pattern="[0-9]{3}" maxlength="3"> ) 
-                        <input class="phone" type="tel" name="ph2" pattern="[0-9]{3}" maxlength="3"> - 
-                        <input class="phone2" type="tel" name="ph3" pattern="[0-9]{4}" maxlength="4">
-                    </th>
-                </tr>
-                <tr>
-                    <th>Email:</th>
-                    <th><input type="email" name="e"></th>
-                </tr>
-                <tr>
-                    <th>Password:</th>
-                    <th><input type="password" name="p"></th>
-                </tr>
-                <tr>
-                    <th>Confirm Password:</th>
-                    <th><input type="password" name="cp"></th>
-                </tr>
-            </table>
-            <h3>Input your first vehicle:</h3>
-            <table class='vehicle'>
-                <tr>
-                    <th>Year: </th>
-                    <th><input type="number" placeholder="YYYY" min="1980" max="2025" name="y"></th>
-                </tr>
-                <tr>
-                    <th>Make: </th>
-                    <th><input type="text" placeholder="Make" name="ma"></th>
-                </tr>
-                <tr>
-                    <th>Model: </th>
-                    <th><input type="text" placeholder="Model" name="mo"></th>
-                </tr>
-                <tr>
-                    <th>Vehicle Type: </th>
-                    <th><select name="vt">
-                        <option value="default" selected>--pick one--</option>
-                        <option value="Pickup">Pickup</option>
-                        <option value="Van">Van</option>
-                        <option value="XL Van">XL Van</option>
-                        <option value="Small Box Truck">Small Box Truck</option>
-                        <option value="Large Box Truck">Large Box Truck</option>
-                    </th>
-                </tr>
-            </table>
-            <button>Submit Application</button>
-        </form>
-    </div>
+    <div class="wraper">
+        <div class="header">
+            <h1>Contractor Application:</h1>
+        </div>
+        <div class="messages">
+            {% if messages %}
+                <ul class="error_list">
+                    {% for i in messages %}
+                        <li class="{{ i.tags }}">{{i}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="registration">
+            <form action="/contractor/register" method="POST">
+                {% csrf_token %}
+                <h3>Input your Profile Info:</h3>
+                <table class='person'>
+                    <tr>
+                        <th>First Name:</th>
+                        <th><input type="text" name="f"></th>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <th><input type="text" name="l"></th>
+                    </tr>
+                    <tr>
+                        <th>Phone:</th>
+                        <th>
+                            ( <input class="phone" type="tel" name="ph1" pattern="[0-9]{3}" maxlength="3"> ) 
+                            <input class="phone" type="tel" name="ph2" pattern="[0-9]{3}" maxlength="3"> - 
+                            <input class="phone2" type="tel" name="ph3" pattern="[0-9]{4}" maxlength="4">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <th><input type="email" name="e"></th>
+                    </tr>
+                    <tr>
+                        <th>Password:</th>
+                        <th><input type="password" name="p"></th>
+                    </tr>
+                    <tr>
+                        <th>Confirm Password:</th>
+                        <th><input type="password" name="cp"></th>
+                    </tr>
+                </table>
+                <h3>Input your first vehicle:</h3>
+                <table class='vehicle'>
+                    <tr>
+                        <th>Year: </th>
+                        <th><input type="number" placeholder="YYYY" min="1980" max="2025" name="y"></th>
+                    </tr>
+                    <tr>
+                        <th>Make: </th>
+                        <th><input type="text" placeholder="Make" name="ma"></th>
+                    </tr>
+                    <tr>
+                        <th>Model: </th>
+                        <th><input type="text" placeholder="Model" name="mo"></th>
+                    </tr>
+                    <tr>
+                        <th>Vehicle Type: </th>
+                        <th><select name="vt">
+                            <option value="default" selected>--pick one--</option>
+                            <option value="Pickup">Pickup</option>
+                            <option value="Van">Van</option>
+                            <option value="XL Van">XL Van</option>
+                            <option value="Small Box Truck">Small Box Truck</option>
+                            <option value="Large Box Truck">Large Box Truck</option>
+                        </th>
+                    </tr>
+                </table>
+                <button>Submit Application</button>
+            </form>
+        </div>
+</div>
 </body>
 </html>

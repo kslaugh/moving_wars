@@ -8,32 +8,34 @@
     <title>Contractor Login</title>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Contractor Login Page</h1>
-        <div class="messages">
-            {% if messages %}
-                <ul class="error_list">
-                    {% for i in messages %}
-                        <li class="{{ i.tags }}">{{i}}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+    <div class="wraper">
+        <div class="login-container">
+            <h1>Contractor Login Page</h1>
+            <div class="messages">
+                {% if messages %}
+                    <ul class="error_list">
+                        {% for i in messages %}
+                            <li class="{{ i.tags }}">{{i}}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <form action="/contractor/login" method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>Email: </th>
+                        <th><input type="email" name="e"></th>
+                    </tr>
+                    <tr>
+                        <th>Password: </th>
+                        <th><input type="password" name="p"></th>
+                    </tr>
+                </table>
+                <button>Login</button>
+            </form>
+            <a href="/contractor/reg">Sign up to be a Mover!</a>
         </div>
-        <form action="/contractor/login" method="POST">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <th>Email: </th>
-                    <th><input type="email" name="e"></th>
-                </tr>
-                <tr>
-                    <th>Password: </th>
-                    <th><input type="password" name="p"></th>
-                </tr>
-            </table>
-            <button>Login</button>
-        </form>
-        <a href="/contractor/reg">Sign up to be a Mover!</a>
     </div>
 </body>
 </html>
