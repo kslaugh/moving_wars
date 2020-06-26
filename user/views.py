@@ -144,3 +144,19 @@ def view_job(request, job_id):
         'vehicles':Vehicles.objects.all(),
     }
     return render(request, "view_job.html", context)
+
+def load_review_page(request,job_id):
+    context = {
+        "job": Jobs.objects.get(id=job_id),
+        "customer":Customers.objects.get(id=request.session["customer_id"])
+
+
+    }
+    return render(request, "reviews.html",context)
+
+def create_review(request):
+    description = request.POST['descripion']
+    rating = request.POST['rating']
+    customer = Customers.objects.get(id=request.session["customer_id"])
+    return redirect("/")
+    

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <h1>You have reached the review page</h1>
+    <h4>Job Title:{{job.title}} </h4>
+    <h5>Hello {{customer.first_name}}, please leave your reviews for this job below.</h5>
+    <form action="/create-review" method="POST">
+        <div class="row">
+          <div class="col-6">
+              <label for="description" name="description" >Description:</label>
+              <textarea class="form-control" cols="50" rows="4"></textarea>
+              <p>
+                <label>Rating</label>
+                <select id = "myList">
+                  <option value = "5">5</option>
+                  <option value = "4">4</option>
+                  <option value = "3">3</option>
+                  <option value = "2">2</option>
+                  <option value = "1">1</option>
+                </select>
+             </p>
+           </div>
+        </div>
+        <button class="btn btn-outline-primary" type="submit">Submit</button>
+        <button class="btn btn-outline-primary" type="submit">Cancel</button>
+    </form>
+
+</body>
+</html>
