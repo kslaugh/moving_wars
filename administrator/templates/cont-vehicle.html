@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Vehicle</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Hey {{ user.fname }}! Add a new whip!</h1>
+    </div>
+    <div class="container">
+        <div class="messages">
+            {% if messages %}
+                <ul class="error_list">
+                    {% for i in messages %}
+                        <li class="{{ i.tags }}">{{i}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <form action="/contractor/update/vehicles" method="POST">
+            {% csrf_token %}
+            <table class='vehicle'>
+                <tr>
+                    <th>Year: </th>
+                    <th><input type="number" placeholder="YYYY" min="1980" max="2025" name="y"></th>
+                </tr>
+                <tr>
+                    <th>Make: </th>
+                    <th><input type="text" placeholder="Make" name="ma"></th>
+                </tr>
+                <tr>
+                    <th>Model: </th>
+                    <th><input type="text" placeholder="Model" name="mo"></th>
+                </tr>
+                <tr>
+                    <th>Vehicle Type: </th>
+                    <th><select name="vt">
+                        <option value="default" selected>--pick one--</option>
+                        <option value="Pickup">Pickup</option>
+                        <option value="Van">Van</option>
+                        <option value="XL Van">XL Van</option>
+                        <option value="Small Box Truck">Small Box Truck</option>
+                        <option value="Large Box Truck">Large Box Truck</option>
+                    </th>
+                </tr>
+            </table>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

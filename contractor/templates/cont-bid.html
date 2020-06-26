@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Bid</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Place a new bid, {{ user.fname }}</h1>
+    </div>
+    <div class="messages">
+        {% if messages %}
+            <ul class="error_list">
+                {% for i in messages %}
+                    <li class="{{ i.tags }}">{{i}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

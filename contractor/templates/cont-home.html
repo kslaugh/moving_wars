@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contractor.css' %}">
     <title>Welcome!</title>
 </head>
 <body>
     <div class="header">
         <h1>Welcome {{ user.fname }}</h1>
+        <a href="/contractor/logout">Logout</a>
+    </div>
+    <div class="container">
         <h2>Available jobs:</h2>
+        <table>
+            <tr>
+                <th class="content_header">Date</th>
+                <th class="content_header">Time</th>
+                <th class="content_header">Job Title</th>
+                <th class="content_header">Vehicle Requested</th>
+            </tr>
+            {% for i in jobs %}
+            <tr>
+                <th class="content_row">{{ i.date }}</th>
+                <th class="content_row">{{ i.time }}</th>
+                <th class="content_row"><a href="/contractor/{{ i.id }}">{{ i.title }}</a></th>
+                <th class="content_row">{{ i.vehicle_type }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/contractor/add/vehicle">Add a vehicle!</a>
     </div>
 </body>
 </html>
