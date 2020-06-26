@@ -70,11 +70,6 @@
     outline: none;
 }
 
-.reg-log{
-    width: 300px;
-    height: 200px;
-    border: solid black 2px;
-}
 
 .views{
     width: 300px;
@@ -156,4 +151,14 @@
     position: absolute;
     bottom: 0;
     background-color: #19a5d880;
+}
+.footer a {
+    color: white;
+    font-size:x-large;
+    font-weight: bold;
+}
+
+.sub_form button{
+    display: block;
+    margin: auto;
 }

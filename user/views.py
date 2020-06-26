@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import bcrypt
 from datetime import timedelta
-from contractor.models import Vehicles
+from contractor.models import Vehicles, Reviews
 from .models import *
 
 # Create your views here.
@@ -18,6 +18,7 @@ def dashboard(request):
         'customer':Customers.objects.get(id=request.session["customer_id"]),
         'jobs':reversed(Jobs.objects.all()),
         'vehicles':Vehicles.objects.all(),
+        "reviews":Reviews.objects.filter(customer=Customers.objects.get(id=request.session["customer_id"])),
     }
     return render(request, "dashboard.html",context)
 
@@ -158,5 +159,5 @@ def create_review(request):
     description = request.POST['descripion']
     rating = request.POST['rating']
     customer = Customers.objects.get(id=request.session["customer_id"])
-    return redirect("/")
+    return redirect("/dashboard")
     
