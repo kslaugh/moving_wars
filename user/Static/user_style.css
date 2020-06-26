@@ -162,3 +162,10 @@
     display: block;
     margin: auto;
 }
+.button{
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+    border: 2px solid darkgray;
+    background-color: red;
+}

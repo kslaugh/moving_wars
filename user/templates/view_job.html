@@ -39,15 +39,28 @@
                 <th> Rating </th>
                 <th> Posted </th>
                 <th> Amount </th>
+                <th> Actions </th>
             </tr>
+            {% if not job.bid %}
             {% for i in job.bids.all %}
             <tr>
                 <th><a href="view_contractor/{{ i.contractor.id }}">{{ i.contractor.fname }}</a></th><!--make a contractor view page-->
                 <th>{{ i.contractor.rating.average }}</th>
                 <th>{{ i.updated_at }}</th>
                 <th>${{ i.amount }}.00</th>
+                <th><a class="button" href="/acceptbid/{{ i.id }}">Accept Bid</a></th>
             </tr>
             {% endfor %}
+            {% endif %}
+            {% if job.bid %}
+            <tr>
+                <th><a href="view_contractor/{{ i.contractor.id }}">{{ job.bid.contractor.fname }}</a></th><!--make a contractor view page-->
+                <th>{{ job.bid.contractor.rating.average }}</th>
+                <th>{{ job.bid.updated_at }}</th>
+                <th>${{ job.bid.amount }}.00</th>
+                <th><a class="button" href="/cancelbid/{{ job.bid.id }}">Cancel Bid</a></th>
+            </tr>
+            {% endif %}
         </table>
     </div>
 </div> 
