@@ -11,7 +11,7 @@
     <div class="wraper">
         <h1 class="logo">Hello {{customer.first_name}} {{customer.last_name}}</h1>
         <h3 class="logo">Let's start create your job!!</h3>
-        <a href="user/logout">Log out</a>
+        
         <form action="new/job" method="POST">
             {%csrf_token%}
         <button class="create-btn" type="submit">Create a new Job Request!</button>
@@ -32,7 +32,9 @@
                 </ul>
                 {% endfor %}
         </div>
+        <a href="user/logout">Log out</a>
     </div>
+    
 
     
 
