@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Administrator,NewAdmin,Prospectors,ProVehicles
 from django.contrib import messages
 import bcrypt
+from contractor.models import Contractors,Vehicles
 
 def index(request):
     return render(request,'admin.html')
@@ -45,7 +46,8 @@ def home(request):
         'user':Administrator.objects.get(id=request.session['user']),
         'new_users':NewAdmin.objects.all(),
         'all_admin':Administrator.objects.all(),
-        'pros':Prospectors.objects.all()
+        'pros':Prospectors.objects.all(),
+        "cons":Contractors.objects.all()
     }
     return render(request,'admin-home.html',context)
 
@@ -79,7 +81,24 @@ def delpro(request, id):
     return redirect('/admin/home')
 
 def actpro(request, id):
-    pass
+    p=Prospectors.objects.get(id=id)
+    v=p.vehicles.first()
+    Contractors.objects.create(
+        fname=p.fname,
+        lname=p.lname,
+        phone=p.phone,
+        email=p.email
+    )
+    Vehicles.objects.create(
+        year=v.year,
+        make=v.make,
+        model=v.model,
+        vehicle_type=v.vehicle_type,
+        owner=Contractors.objects.last()
+    )
+    p.delete()
+    v.delete()
+    return redirect('/admin/home')
 
 def viewpro(request, id):
     pro=Prospectors.objects.get(id=id)
@@ -88,3 +107,7 @@ def viewpro(request, id):
         'v':pro.vehicles.first()
     }
     return render(request,'admin-pro.html',context)
+
+def condel(request, id):
+    Contractors.objects.get(id=id).delete()
+    return redirect('/admin/home')

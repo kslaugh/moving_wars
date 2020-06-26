@@ -80,6 +80,28 @@
                 {% endfor %}
             </table>
         </div>
+        <div class="table">
+            <h3>All Contractors:</h3>
+            <table class="newadmin">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in cons %}
+                <tr>
+                    <th>{{ i.fname }}</th>
+                    <th>{{ i.lname }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>
+                        <a href="/admin/con/{{ i.id }}">View</a><!--Doesn't do anything yet!-->
+                        <a href="/admin/del-con/{{ i.id }}">Delete</a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </body>
 </html>
