@@ -58,14 +58,28 @@ def home(request):
     for x in vts:
         vts2.append(x)
     for j in vts2:
-        print(j)
         if len(avail_jobs)<1:
             avail_jobs=Jobs.objects.filter(vehicle_type=j)
         avail_jobs|=Jobs.objects.filter(vehicle_type=j)
-    print(avail_jobs)
+    pen=[]
+    for k in c.bids.all():
+        if not k.jobs.bid:
+            if len(pen)<1:
+                pen=Jobs.objects.filter(bid=k)
+            else:
+                pen|=Jobs.objects.filter(bid=k)
+    act=[]
+    for l in c.bids.exclude(j=None):
+        if len(act)<1:
+            act=Jobs.objects.filter(bid=l)
+        else:
+            act|=Jobs.objects.filter(bid=l)
+    print(pen)
     context={
         'user':Contractors.objects.get(id=request.session['cont']),
-        'jobs':avail_jobs
+        'jobs':avail_jobs,
+        'pending': pen,
+        'accepted':act
     }
     return render(request,'cont-home.html',context)
 

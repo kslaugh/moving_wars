@@ -30,6 +30,40 @@
             </tr>
             {% endfor %}
         </table>
+        <h2>Jobs with pending Bids:</h2>
+        <table>
+            <tr>
+                <th class="content_header">Date</th>
+                <th class="content_header">Time</th>
+                <th class="content_header">Job Title</th>
+                <th class="content_header">Vehicle Requested</th>
+            </tr>
+            {% for i in pending %}
+            <tr>
+                <th class="content_row">{{ i.date }}</th>
+                <th class="content_row">{{ i.time }}</th>
+                <th class="content_row"><a href="/contractor/{{ i.id }}">{{ i.title }}</a></th>
+                <th class="content_row">{{ i.vehicle_type }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Jobs won:</h2>
+        <table>
+            <tr>
+                <th class="content_header">Date</th>
+                <th class="content_header">Time</th>
+                <th class="content_header">Job Title</th>
+                <th class="content_header">Vehicle Requested</th>
+            </tr>
+            {% for j in accepted %}
+            <tr>
+                <th class="content_row">{{ j.date }}</th>
+                <th class="content_row">{{ j.time }}</th>
+                <th class="content_row"><a href="/contractor/{{ j.id }}">{{ j.title }}</a></th>
+                <th class="content_row">{{ j.vehicle_type }}</th>
+            </tr>
+            {% endfor %}
+        </table>
         <a href="/contractor/add/vehicle">Add a vehicle!</a>
     </div>
 </body>
