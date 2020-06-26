@@ -10,7 +10,7 @@ def index(request):
 def log(request):
     e=Contractors.objects.logVals(request.POST)
     if len(e)==0:
-        request.session['user']=Contractors.objects.get(email=request.POST['e']).id
+        request.session['cont']=Contractors.objects.get(email=request.POST['e']).id
         return redirect('/contractor/home')
     else:
         for i in e.values():

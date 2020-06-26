@@ -1,6 +1,6 @@
 from django.db import models
-
 import re
+
 class UserManager(models.Manager):
     def basic_validator(self,post_data):
         errors= {}

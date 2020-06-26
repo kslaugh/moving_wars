@@ -87,7 +87,8 @@ def actpro(request, id):
         fname=p.fname,
         lname=p.lname,
         phone=p.phone,
-        email=p.email
+        email=p.email,
+        password=p.password
     )
     Vehicles.objects.create(
         year=v.year,
