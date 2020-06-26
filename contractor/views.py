@@ -31,10 +31,10 @@ def register(request):
             phone=request.POST['ph1']+request.POST['ph2']+request.POST['ph3'],
             password=pw
             )
-        messages.error(request,"Contractor Application sent")
+        messages.success(request,"Contractor Application sent")
         messages.error(request,"Your account will be approved within a couple days")
-        return redirect('/admin/')
+        return redirect('/contractor/')
     else:
         for i in e.values():
             messages.error(request,i)
-        return redirect('/admin/reg')
+        return redirect('/contractor/reg')
