@@ -57,14 +57,15 @@ class Contractors(models.Model):
 
 class Bids(models.Model):
     amount=models.IntegerField()
-    job=models.ForeignKey(Jobs, related_name='bids',on_delete=models.CASCADE)
+    jobs=models.ForeignKey(Jobs, related_name='bids',on_delete=models.CASCADE)
+    j=models.ForeignKey(Jobs,related_name='bid',on_delete=models.CASCADE,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     contractor=models.ForeignKey(Contractors, related_name='bids',on_delete=models.CASCADE)
     objects=ContManager()
 
 class Ratings(models.Model):
-    average=models.DecimalField(max_digits=3,decimal_places=2)
+    average=models.DecimalField(max_digits=3,decimal_places=2,default=5)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     contractor=models.OneToOneField(Contractors,related_name='rating',on_delete=models.CASCADE)

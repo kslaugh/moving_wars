@@ -1,6 +1,6 @@
 from django.db import models
-
 import re
+
 class UserManager(models.Manager):
     def basic_validator(self,post_data):
         errors= {}
@@ -51,4 +51,20 @@ class Jobs(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    objects=UserManager()
+
+class CompletedJobs(models.Model):
+    title=models.CharField(max_length=255)
+    start_location=models.CharField(max_length=100)
+    end_location=models.CharField(max_length=100)
+    description=models.CharField(max_length=100)
+    attributes=models.CharField(max_length=100)
+    fragile=models.BooleanField()
+    vehicle_type=models.CharField(max_length=100)
+    customer=models.ForeignKey(Customers, related_name='completed_jobs', on_delete=models.CASCADE)
+    duration=models.DurationField()
+    date=models.DateField()
+    time=models.TimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     objects=UserManager()

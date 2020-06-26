@@ -32,6 +32,37 @@
         <a href="/dashboard">dashboard</a>
         <a href="/user/logout">Log out</a>
     </div>
+    <div class="views">
+        <table>
+            <tr>
+                <th> Contractor </th>
+                <th> Rating </th>
+                <th> Posted </th>
+                <th> Amount </th>
+                <th> Actions </th>
+            </tr>
+            {% if not job.bid.all %}
+            {% for i in job.bids.all %}
+            <tr>
+                <th><a href="view_contractor/{{ i.contractor.id }}">{{ i.contractor.fname }}</a></th><!--make a contractor view page-->
+                <th>{{ i.contractor.rating.average }}</th>
+                <th>{{ i.updated_at }}</th>
+                <th>${{ i.amount }}.00</th>
+                <th><a class="button" href="/acceptbid/{{ i.id }}">Accept Bid</a></th>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            {% if job.bid.all %}
+            <tr>
+                <th><a href="view_contractor/{{ i.contractor.id }}">{{ job.bid.first.contractor.fname }}</a></th><!--make a contractor view page-->
+                <th>{{ job.bid.first.contractor.rating.average }}</th>
+                <th>{{ job.bid.first.updated_at }}</th>
+                <th>${{ job.bid.first.amount }}.00</th>
+                <th><a class="button" href="/cancelbid/{{ job.bid.first.id }}">Cancel Bid</a></th>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
 </div> 
 </body>
 </html>

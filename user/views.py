@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import bcrypt
 from datetime import timedelta
-from contractor.models import Vehicles, Reviews
+from contractor.models import Vehicles, Reviews, Bids
 from .models import *
 
 
@@ -139,6 +139,7 @@ def update_job(request, job_id):
 
 def view_job(request, job_id):
     j= Jobs.objects.get(id=job_id)
+    print(j.bids.all())
     context={
         'job':j,
         'jobs': Jobs.objects.all(),
@@ -165,3 +166,15 @@ def create_review(request): # creates a new review.
         customer = Customers.objects.get(id=request.session["customer_id"])
     )
     return redirect("/dashboard")   
+
+def acceptbid(request,id):
+    bid=Bids.objects.get(id=id)
+    bid.j=bid.jobs
+    bid.save()
+    return redirect('/view/'+str(bid.j.id))
+
+def cancelbid(request,id):
+    bid=Bids.objects.get(id=id)
+    bid.j=None
+    bid.save()
+    return redirect('/view/'+str(bid.jobs.id))

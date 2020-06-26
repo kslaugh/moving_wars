@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Administrator,NewAdmin,Prospectors,ProVehicles
 from django.contrib import messages
 import bcrypt
-from contractor.models import Contractors,Vehicles
+from contractor.models import Contractors,Vehicles,Ratings
 
 def index(request):
     return render(request,'admin.html')
@@ -87,7 +87,8 @@ def actpro(request, id):
         fname=p.fname,
         lname=p.lname,
         phone=p.phone,
-        email=p.email
+        email=p.email,
+        password=p.password
     )
     Vehicles.objects.create(
         year=v.year,
@@ -95,6 +96,10 @@ def actpro(request, id):
         model=v.model,
         vehicle_type=v.vehicle_type,
         owner=Contractors.objects.last()
+    )
+    Ratings.objects.create(
+        average=5,
+        contractor=Contractors.objects.last()
     )
     p.delete()
     v.delete()

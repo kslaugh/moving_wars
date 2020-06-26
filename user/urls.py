@@ -16,5 +16,7 @@ urlpatterns = [
     path('edit/<int:job_id>/update',views.update_job),
     path('view/<int:job_id>/', views.view_job),
     path('user/reviews/<int:job_id>',views.load_review_page), # path for review page
-    path('create-review',views.create_review)# path that renders the review form
+    path('create-review',views.create_review),# path that renders the review form
+    path('acceptbid/<int:id>',views.acceptbid),
+    path('cancelbid/<int:id>',views.cancelbid)
     ]

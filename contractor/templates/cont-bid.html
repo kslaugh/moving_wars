@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contractor.css' %}">
+    <title>Place Bid</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Place a new bid, {{ user.fname }}</h1>
+        <a href="/contractor/logout">Logout</a>
+    </div>
+    <div class="messages">
+        {% if messages %}
+            <ul class="error_list">
+                {% for i in messages %}
+                    <li class="{{ i.tags }}">{{i}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="bidcont">
+        <div class="jobdetails">
+            <table>
+                <tr>
+                    <th>Job Title:</th>
+                    <th>{{ job.title }}</th>
+                </tr>
+                <tr>
+                    <th>Customer Name:</th>
+                    <th>{{ job.customer.first_name }}</th>
+                </tr>
+                <tr>
+                    <th>Date:</th>
+                    <th>{{ job.date }}</th>
+                </tr>
+                <tr>
+                    <th>Time:</th>
+                    <th>{{ job.time }}</th>
+                </tr>
+                <tr>
+                    <th>Duration:</th>
+                    <th>{{ job.duration }}</th>
+                </tr>
+                <tr>
+                    <th>Start Location:</th>
+                    <th>{{ job.start_location }}</th>
+                </tr>
+                <tr>
+                    <th>Destination Location:</th>
+                    <th>{{ job.end_location }}</th>
+                </tr>
+                <tr>
+                    <th>Description:</th>
+                    <th>{{ job.description }}</th>
+                </tr>
+            </table>
+        </div>
+        <div class="bid">
+            <h2>Bid:</h2>
+            <form action="/contractor/{{ job.id }}/placebid" method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>Bid Amount: </th>
+                        <th>$<input class="money" type="number" min="0" max="2000" name='a'></th>
+                    </tr>
+                </table>
+                <div class="buttons">
+                    <a class="button decline" href="/contractor/cancel">Cancel_Bid</a>
+                    <button class="button form bold">Place_Bid</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Contractors,Vehicles,Ratings,Reviews,Bids
 from administrator.models import Prospectors,ProVehicles
+from user.models import Jobs
 from django.contrib import messages
 import bcrypt
 
@@ -10,7 +11,7 @@ def index(request):
 def log(request):
     e=Contractors.objects.logVals(request.POST)
     if len(e)==0:
-        request.session['user']=Contractors.objects.get(email=request.POST['e']).id
+        request.session['cont']=Contractors.objects.get(email=request.POST['e']).id
         return redirect('/contractor/home')
     else:
         for i in e.values():
@@ -47,7 +48,85 @@ def register(request):
         return redirect('/contractor/reg')
 
 def home(request):
+    c=Contractors.objects.get(id=request.session['cont'])
+    all_vehicles=c.vehicles.all()
+    vts={}
+    avail_jobs=[]
+    for i in all_vehicles:
+        vts[i.vehicle_type]= +1
+    vts2=[]
+    for x in vts:
+        vts2.append(x)
+    for j in vts2:
+        if len(avail_jobs)<1:
+            avail_jobs=Jobs.objects.filter(vehicle_type=j)
+        avail_jobs|=Jobs.objects.filter(vehicle_type=j)
+    pen=[]
+    for k in c.bids.all():
+        if not k.jobs.bid:
+            if len(pen)<1:
+                pen=Jobs.objects.filter(bids=k)
+            else:
+                pen|=Jobs.objects.filter(bids=k)
+    act=[]
+    for l in c.bids.exclude(j=None):
+        if len(act)<1:
+            act=Jobs.objects.filter(bid=l)
+        else:
+            act|=Jobs.objects.filter(bid=l)
+    print(pen)
+    context={
+        'user':Contractors.objects.get(id=request.session['cont']),
+        'jobs':avail_jobs,
+        'pending': pen,
+        'accepted':act
+    }
+    return render(request,'cont-home.html',context)
+
+def addv(request):
     context={
         'user':Contractors.objects.get(id=request.session['cont'])
     }
-    return render(request,'cont-home.html',context)
+    return render(request,'cont-vehicle.html',context)
+
+def addvehicle(request):
+    Vehicles.objects.create(
+        year=request.POST['y'],
+        make=request.POST['ma'],
+        model=request.POST['mo'],
+        vehicle_type=request.POST['vt'],
+        owner=Contractors.objects.get(id=request.session['cont'])
+    )
+    return redirect('/contractor/home')
+
+def logout(request):
+    request.session.clear()
+    return redirect('/contractor/')
+
+def viewjob(request,id):
+    context={
+        'user':Contractors.objects.get(id=request.session['cont']),
+        'job':Jobs.objects.get(id=id)
+    }
+    return render(request,"cont-job.html",context)
+
+def cancel (request):
+    return redirect('/contractor/home')
+
+def bid(request,id):
+    context={
+        'user':Contractors.objects.get(id=request.session['cont']),
+        'job':Jobs.objects.get(id=id)
+    }
+    return render(request,"cont-bid.html",context)
+
+def placebid(request,id):
+    if request.POST['a']=='':
+        messages.error(request,'You must input an Amount')
+        return redirect('/contractor/'+str(id)+'/bid')
+    Bids.objects.create(
+        amount=request.POST['a'],
+        jobs=Jobs.objects.get(id=id),
+        contractor=Contractors.objects.get(id=request.session['cont'])
+    )
+    return redirect('/contractor/home')
