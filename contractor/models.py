@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import Customers,Jobs
+import bcrypt,re
 
 class ContManager(models.Manager):
     def logVals(self, d):
@@ -28,12 +29,17 @@ class ContManager(models.Manager):
             err['p']='Password needs to be at least 8 characters'
         if d['cp']!=d['p']:
             err['cp']='Passwords do not match'
-        if len(d['ph1'])!=3:
+        if len(d['ph1'])!=3 or len(d['ph2'])!=3 or len(d['ph3'])!=4:
             err['ph']='Please input a Valid Phone Number'
-        if len(d['ph2'])!=3:
-            err['ph']='Please input a Valid Phone Number'
-        if len(d['ph3'])!=4:
-            err['ph']='Please input a Valid Phone Number'
+        return err
+    def veVals(self,d):
+        err={}
+        if len(d['y'])!=4:
+            err['y']='Input Vehicle Year'
+        if len(d['ma'])<3:
+            err['ma']='Input a proper Make'
+        if len(d['mo'])<3:
+            err['mo']=''
         return err
 
 
