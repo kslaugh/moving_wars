@@ -76,8 +76,8 @@ class Reviews(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     customer=models.ForeignKey(Customers, related_name='reviews',on_delete=models.CASCADE)
-    ave_rating=models.ForeignKey(Ratings,related_name='reviews',on_delete=models.CASCADE)
-    contractor=models.ForeignKey(Contractors,related_name='reviews',on_delete=models.CASCADE)
+    ave_rating=models.ForeignKey(Ratings,null=True,related_name='reviews',on_delete=models.CASCADE)
+    contractor=models.ForeignKey(Contractors, null=True,related_name='reviews',on_delete=models.CASCADE)
     objects=ContManager()
 
 class Vehicles(models.Model):

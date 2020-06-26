@@ -5,6 +5,7 @@ from datetime import timedelta
 from contractor.models import Vehicles, Reviews
 from .models import *
 
+
 # Create your views here.
 def user(request):
     return render(request, "user.html")
@@ -146,18 +147,21 @@ def view_job(request, job_id):
     }
     return render(request, "view_job.html", context)
 
-def load_review_page(request,job_id):
+def load_review_page(request,job_id): # renders the review page
     context = {
         "job": Jobs.objects.get(id=job_id),
         "customer":Customers.objects.get(id=request.session["customer_id"])
+    
 
 
     }
     return render(request, "reviews.html",context)
 
-def create_review(request):
-    description = request.POST['descripion']
-    rating = request.POST['rating']
-    customer = Customers.objects.get(id=request.session["customer_id"])
-    return redirect("/dashboard")
-    
+
+def create_review(request): # creates a new review.
+    Reviews.objects.create(
+        description = request.POST['description'],
+        rating = request.POST['rating'],
+        customer = Customers.objects.get(id=request.session["customer_id"])
+    )
+    return redirect("/dashboard")   
