@@ -3,10 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+    <!-- {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}"> -->
     <title>View Show</title>
 </head>
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+}
+
+.wraper {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, #EE7752, #426bf5 ,#19a5d8,#23D5AB);
+    background-size: 400% 400%;
+    position : relative;
+    animation: change 10s ease-in-out infinite;
+
+}
+.logo{
+    font-family: fantasy;
+    font-weight: bold;
+    color: white ;
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.wraper h2{
+    font-family: fantasy;
+    font-weight: bold;
+    color: white ;
+    text-align: center;
+    
+}
+
+.create-btn {
+    display: block;
+    margin: auto;
+    width: 130px;
+    height: 42px;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    background: black;
+    outline: none;
+    
+}
+
+.text_area{
+    width: 600px;
+    min-height: 200px;
+    border:solid black 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    overflow: auto;
+    padding: 5px 10px;
+}
+
+.registration button{
+    width: 80px;
+    height: 22px;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    background: black;
+    outline: none;
+}
+
+
+.views{
+    width: 300px;
+    min-height: 100px;
+    border: solid black 2px;
+    display: block;
+    background-color: white;
+    margin: auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 50px;
+}   
+
+.info{
+    font-family: 'Oswald', sans-serif;
+}
+
+.info p{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+.sub_form{
+    max-width: 250px;
+    margin: 2rem auto;
+    border: 2px solid black;
+    background-color: lightblue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    
+}
+.sub_form label{
+    display: block;
+}
+
+.sub_form input{
+    display: block;
+    width: 250px;
+}
+
+.control{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.btn-button{
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 80px;
+    height: 32px;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    background: black;
+    outline: none;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    background-color: #19a5d880;
+}
+.footer a {
+    color: white;
+    font-size:x-large;
+    font-weight: bold;
+}
+
+.sub_form button{
+    display: block;
+    margin: auto;
+}
+.button{
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+    border: 2px solid darkgray;
+    background-color: red;
+}
+@keyframes change {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+    
+    }
+</style>
 <body>
 <div class="wraper">
     
